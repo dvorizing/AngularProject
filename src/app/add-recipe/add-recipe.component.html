@@ -1,0 +1,134 @@
+<!-- <form (ngSubmit)="save(myForm)" #myForm="ngForm">
+    <input type="text" placeholder="שם המתכון" [(ngModel)]="myRecipe.Name" name="name" />
+    <input type="url" placeholder="הכנס כתובת תמונה אם יש לך" name="pic" [(ngModel)]="myRecipe.Image"/>
+    <select [(ngModel)]="myRecipe.CategoryId" name="category">
+        <option *ngFor="let x of arrCategory">{{x.Name}}</option>
+    </select>
+    <input type="number" placeholder="זמן הכנה" [(ngModel)]="myRecipe.PreparationTimeInMinute" name="time" />
+    <input type="number" placeholder="דרגת קושי" [(ngModel)]="myRecipe.Level" name="level" max="5" value="0"/>
+    <input type="text" placeholder="שם השכבה" #nameLayer name="layerName" />
+    
+    <input type="button" value="הוסף שכבה" (click)="addLayer(nameLayer.value)" />
+    <input type="text" placeholder="שם מוצר" #c />
+    <input type="button" (click)="addComponent(c)" value="+1"/>
+    <input type="text" placeholder="הוראה" #in />
+    <input type="button" (click)="addInstruction(in)" value="+1"/>
+    <input type="submit"/>
+</form>
+////// -->
+<div class="container">
+
+   
+
+  <mat-card class="example-card">
+      <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{myRecipe.Name}} |ע"י {{user.Name}}: </mat-card-title>
+          <mat-card-subtitle>קטגוריה: {{s.value}} | זמן הכנה: {{myRecipe.PreparationTimeInMinute|hoursPipe}}
+          </mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/{{myRecipe.Image}}" alt="Photo of a Shiba Inu"/>
+      <br />
+      <img *ngFor="let i of [].constructor(myRecipe.Level)" src="../../assets/icons/star (2).png" class="stars" />
+      <img *ngFor="let i of [].constructor(5-myRecipe.Level)" src="../../assets/icons/star (3).png"class="stars" />
+          
+      <div class="instruction">
+          <div class="in">
+          <h1>מוצרים:</h1>
+          <ul *ngFor="let x of myRecipe.Layers">
+              <h2>{{x.Description}} </h2>
+              <div>
+
+                  <li *ngFor="let y of x.Components">{{y}}</li>
+              </div>
+             
+          </ul>
+      </div>
+          <div class="in">
+              <h1>הוראות הכנה:</h1>
+              <li *ngFor="let y of myRecipe.Preparation">{{y}}</li>
+          </div>
+      </div>
+  </mat-card>
+  <mat-card class="example-card">
+
+      <form class="example-form example-card" (ngSubmit)="save(myForm)" #myForm="ngForm">
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>שם המתכון</mat-label>
+                          <input matInput [(ngModel)]="myRecipe.Name" name="name">
+                      </mat-form-field>
+                  </td>
+                  <td>
+
+                      <mat-form-field class="example-full-width">
+                          <mat-label>בחר קטגוריה</mat-label>
+                          <mat-select [(ngModel)]="myRecipe.CategoryId" name="category" #s>
+                              <mat-option *ngFor="let x of arrCategory" [value]="x.Name">
+                                  {{x.Name}}
+                              </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+
+                  </td>
+              </tr>
+          </table>
+          <mat-form-field class="example-full-width">
+              <mat-label>הכנס כתובת תמונה אם יש לך</mat-label>
+              <input matInput type="url" matInput name="pic" [(ngModel)]="myRecipe.Image" value="">
+          </mat-form-field>
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>זמן הכנה</mat-label>
+                          <input matInput [(ngModel)]="myRecipe.PreparationTimeInMinute" name="time"
+                              type="number">
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>דרגת קושי</mat-label>
+                          <input matInput type="number" [(ngModel)]="myRecipe.Level" name="level" max="5"
+                              value="0">
+                      </mat-form-field>
+                  </td>
+              </tr>
+          </table>
+
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>הוסף שכבה</mat-label>
+                          <span matPrefix (click)="addLayer(nameLayer.value)">+1 &nbsp;</span>
+                          <input type="tel" matInput #nameLayer name="layerName">
+                          <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>הוסף מוצר</mat-label>
+                          <span matPrefix (click)="addComponent(c)">+1 &nbsp;</span>
+                          <input type="tel" matInput #c>
+                          <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+                  </td>
+              </tr>
+          </table>
+
+          <mat-form-field class="example-full-width">
+              <mat-label>הוסף הוראה</mat-label>
+              <span matPrefix (click)="addInstruction(in)">+1 &nbsp;</span>
+              <input type="tel" matInput #in>
+              <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <input type="submit" />
+      </form>
+  </mat-card>
+
+
+
+</div>

@@ -1,0 +1,31 @@
+<form (ngSubmit)="save(form)" #form>
+    <input type="text" value="{{myRecipe.Name}}" [(ngModel)]="myRecipe.Name" name="name" />
+    <input type="url" value="{{myRecipe.Image}}" [(ngModel)]="myRecipe.Image" name="image" />
+    <input type="number" value="{{myRecipe.PreparationTimeInMinute}}" [(ngModel)]="myRecipe.PreparationTimeInMinute"
+        name="time" />
+    <select [(ngModel)]="myRecipe.CategoryId" name="category" [(ngModel)]="myRecipe.CategoryId">
+        <option *ngFor="let x of arrCategory">{{x.Name}}</option>
+    </select>
+    <input type="number" placeholder="דרגת קושי" [(ngModel)]="myRecipe.Level" name="level" max="5" />
+    <div>
+        <h1>products</h1>
+        <div *ngFor="let x of myRecipe.Layers; index as j">
+            <div>
+                <h2>{{x.Description}}</h2>
+                <div *ngFor="let y of x.Components; index as k">
+                    <h4>{{y}}</h4>
+                    <input type="button" value="-" (click)="removeComponent(j,k)" />
+                </div>
+                <input type="text" placeholder="הוסף מוצר לשכבה זו" #com />
+                <input type="button" value="+" (click)="addComponent(j,com.value)" />
+            </div>
+        </div>
+        <h1>הוראות הכנה</h1>
+        <div *ngFor="let y of myRecipe.Preparation; index as i">
+            <input type="text" value="{{y}}" #pre (change)="editInstruction(i,pre.value)" />
+        </div>
+        <input type="text" placeholder="להוספת הוראה" #inst />
+        <input type="button" value="+" (click)="addInstruction(inst.value)" />
+    </div>
+    <input type="submit" value="לשמירת שינויים" />
+</form>

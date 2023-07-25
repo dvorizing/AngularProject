@@ -1,0 +1,61 @@
+
+<div id="all">
+  <!-- <div id="i"
+  style="background-image:url('../../assets/icons/{{iconImage}}'); background-repeat: no-repeat;">
+</div> -->
+  <h1>{{myRecipe.Name}}</h1>
+  <h1>{{myRecipe.AddDate| date:'shortDate'}}</h1>
+ 
+
+ 
+
+  <img src="assets/images/{{myRecipe.Image}}" id="pic" />
+  <div id="time">
+    <h2>זמן הכנה: {{myRecipe.PreparationTimeInMinute|hoursPipe}} </h2>
+    <mat-icon id="icon">query_builder</mat-icon>
+  </div>
+  <h2>קטגוריה: {{myRecipe.CategoryId}} </h2>
+  <img *ngFor="let i of [].constructor(myRecipe.Level)" src="../../assets/icons/star (2).png" class="stars" />
+  <img *ngFor="let i of [].constructor(5-myRecipe.Level)" src="../../assets/icons/star (3).png" class="stars" />
+  <br />
+  <br />
+  <div>
+    <h2 id="tit">מוצרים:</h2>
+    <ul *ngFor="let x of myRecipe.Layers">{{x.Description}}
+      <li *ngFor="let y of x.Components">{{y}}</li>
+    </ul>
+    <h2 id="tit">הוראות הכנה:</h2>
+    <ul>
+      <li *ngFor="let y of myRecipe.Preparation; index as i">{{i+1}}. {{y}}</li>
+    </ul>
+  </div>
+  <input type="button" (click)="edit()" value="לעריכת המתכון" *ngIf="user.Id===myRecipe.UserId" />
+
+
+</div>
+<!-- <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{myRecipe.Name}}</mat-card-title>
+      <mat-card-subtitle>{{myRecipe.PreparationTimeInMinute|hoursPipe}}</mat-card-subtitle>
+      <mat-card-subtitle>{{myRecipe.CategoryId}}</mat-card-subtitle>
+      <img *ngFor="let i of [].constructor(myRecipe.Level)" src="../../assets/icons/star (2).png"  class="stars"/>
+      <img *ngFor="let i of [].constructor(5-myRecipe.Level)" src="../../assets/icons/star (3).png"  class="stars"/>
+    </mat-card-header>
+    <img mat-card-image src="assets/images/{{myRecipe.Image}}" alt="תמונת המתכון">
+    <mat-card-content>
+     
+    
+    <h3>המוצרים:</h3>
+    <ul *ngFor="let x of myRecipe.Layers">{{x.Description}}
+          <li *ngFor="let y of x.Components">{{y}}</li>
+    </ul>`
+    <h3>הוראות הכנה:</h3>
+    <ul>
+    <li *ngFor="let y of myRecipe.Preparation; index as i">{{i+1}}. {{y}}</li>
+   </ul>
+</mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="edit()" *ngIf="user.Id===myRecipe.UserId">לעריכת המתכון</button>
+    </mat-card-actions>
+  </mat-card> -->

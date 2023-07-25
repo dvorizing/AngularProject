@@ -1,0 +1,32 @@
+nav {
+
+    // position:fixed;
+    // //margin-bottom: 20%;
+    // top: 0%;
+    display: flex;
+    direction: rtl;
+    
+    z-index: 9;
+    background-color: gainsboro;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    }
+    ul{
+    display: flex;
+    } 
+    li{
+        list-style-type: none;
+        margin:5px;
+    }
+    #name {
+        position: absolute;
+        left: 10px;
+    }
+    button{
+        border:1px solid;
+        border-color: red !important;
+    }
+    #logo{
+        width:30%;
+    }

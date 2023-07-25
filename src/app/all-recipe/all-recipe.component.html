@@ -1,0 +1,50 @@
+<!-- <input type="button" value="לסינון" (click)="IsFilter()" id="filterButton"/> -->
+<button mat-flat-button color="warn" (click)="IsFilter()" id="filterButton">לסינון</button>
+<div id="container">
+    <div id="all-recipes">
+        <div *ngIf="!flagFilter" class="all">
+
+            <div *ngFor="let y of this.arrRecipes">
+                <app-small-recipe [recipe]="y"></app-small-recipe>
+            </div>
+        </div>
+        <div *ngIf="flagFilter" class="all">
+
+            <div *ngFor="let x of arrTemp">
+                <app-small-recipe [recipe]="x"></app-small-recipe>
+            </div>
+        </div>
+    </div>
+    <form (ngSubmit)="filterRecipes(form)" *ngIf="flagDisplayFilter" #form>
+        <h2>סינון</h2>
+        <mat-form-field appearance="fill">
+            <mat-label>משך הכנה</mat-label>
+            <input matInput type="number" name="time" [(ngModel)]="myRecipe.PreparationTimeInMinute">
+        </mat-form-field>
+        <!-- <input type="text" placeholder="משך הכנה" name="time" [(ngModel)]="myRecipe.PreparationTimeInMinute" /> -->
+        <!-- <input type="range" [(ngModel)]="myRecipe.Level" name="level" #r max="5" step="1" value="0" /> -->
+        <mat-slider [(ngModel)]="myRecipe.Level" name="level" #r max="5" step="1" value="0" class="level">
+            <input matSliderThumb>
+        </mat-slider>
+        <!-- <select name="category" [(ngModel)]="myRecipe.CategoryId">
+            <option *ngFor="let x of arrCategory">{{x.Name}}</option>
+        </select> -->
+
+        <mat-form-field appearance="fill">
+            <mat-label>קטגוריה</mat-label>
+            <mat-select name="category" [(ngModel)]="myRecipe.CategoryId">
+                <mat-option value="one" *ngFor="let x of arrCategory">{{x.Name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>חיפוש לפי שם</mat-label>
+            <input matInput type="number" name="text" [(ngModel)]="myRecipe.Name" name="name">
+        </mat-form-field>
+        <!-- <input type="text" placeholder="חיפוש לפי שם" [(ngModel)]="myRecipe.Name" name="name" /> -->
+        <!-- <input type="button" value="נקה סינון" (click)="clear(form)" /> -->
+        <button mat-stroked-button color="warn" (click)="clear(form)">נקה סינון</button>
+        <!-- <input type="submit" value="סנן" /> -->
+        <button mat-flat-button color="warn" type="submit">סנן</button>
+
+    </form>
+</div>

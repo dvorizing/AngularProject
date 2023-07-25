@@ -1,0 +1,27 @@
+.all{
+    display:flex;
+    flex-wrap: wrap;  
+     margin:3vh auto;
+}
+#filterButton{
+margin-right: 50%;
+}
+#container{
+    display:flex;
+   
+}
+#all-recipes{
+    flex:6;
+}
+form{
+    flex:1;
+}
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+.level{
+   width:75%;
+color-scheme:  red !important;
+}

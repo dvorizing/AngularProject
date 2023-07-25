@@ -1,0 +1,22 @@
+<!-- <div (click)="details()" class="example-card" >
+ 
+    <img src="assets/images/{{recipe.Image}}"/>
+    <h1>{{recipe.Name}}</h1>
+    <h3>{{recipe.PreparationTimeInMinute}}</h3>
+    <h3>{{recipe.Level|starsPipe}}</h3>
+    <h3>{{recipe.UserId}}</h3>
+
+</div> -->
+
+<mat-card (click)="details()" class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{recipe.Name}}</mat-card-title>
+    <mat-card-subtitle>{{recipe.PreparationTimeInMinute|hoursPipe}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="../../assets/images/{{recipe.Image}}" alt="Photo of a Shiba Inu" id="img1"/>
+  <br/>
+  <img *ngFor="let i of [].constructor(recipe.Level)" src="../../assets/icons/star (2).png" class="stars" />
+  <img *ngFor="let i of [].constructor(5-recipe.Level)" src="../../assets/icons/star (3).png" class="stars" />
+</mat-card>
+

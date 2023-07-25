@@ -1,0 +1,54 @@
+<!-- <nav>
+  <ul>
+    <li>
+      <a routerLink="">בית</a>
+    </li>
+    <li *ngIf="myUser.Name=='guest'">
+      <a routerLink="register" >התחברות</a>
+    </li>
+    <li>
+      <a routerLink="login">כניסה</a>
+    </li>
+    <li *ngIf="myUser.Name!='guest'">
+      <a routerLink="add">הוספה</a>
+    </li>
+    <li *ngIf="myUser.Name!='guest'">
+      <a (click)="logout()">יציאה</a>
+    </li> 
+  </ul>
+</nav> -->
+
+<nav>
+  <!-- <ul>
+    <img src="../../assets/images/icon-rashi.png" id="logo"/>
+  </ul> -->
+  <ul>
+    <li>
+      <button mat-icon-button color="warn" aria-label="Example icon button with a home icon" routerLink="">
+        <mat-icon>home</mat-icon>
+      </button>
+    </li>
+    <li>
+      <button mat-stroked-button color="warn" routerLink="register">התחברות</button>
+    </li>
+    <li>
+      <button mat-stroked-button color="warn" (click)="login()">כניסה</button>
+    </li>
+    <!-- <button mat-stroked-button color="warn" routerLink="login">כניסה</button> -->
+    <li>
+      <button mat-stroked-button color="warn" *ngIf="myUser.Name!='guest'" routerLink="add">הוספת מתכון</button>
+    </li>
+    <li>
+      <button mat-stroked-button color="warn" (click)="logout()" *ngIf="myUser.Name!='guest'">יציאה</button>
+    </li>
+  </ul>
+  <ul>
+    <h1 id="name">שלום {{myUser.Name}}</h1>
+  </ul>
+</nav>
+
+<app-login *ngIf="loginSer.isLogin"></app-login>
+<router-outlet (newItemEvent)="changeName($event)"></router-outlet>
+
+<!-- <app-login></app-login>
+<app-all-recipe></app-all-recipe> -->

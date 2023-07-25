@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  #form{
+    margin: 5% auto;
+  }
+  body{
+    background-image: url("../../assets/images/tasty-fresh.jpg");
+    opacity: 0.2;
+  }
